@@ -1,5 +1,5 @@
 import type { Metadata, Viewport } from "next";
-import { Geist, Geist_Mono } from "next/font/google";
+import { Inter, JetBrains_Mono } from "next/font/google";
 import type { ReactNode } from "react";
 
 import { siteConfig } from "@/config/site";
@@ -7,14 +7,14 @@ import { ToastProvider } from "@/components/ui/toast";
 import { ThemeProvider } from "@/components/ui/theme-provider";
 import "./globals.css";
 
-const geistSans = Geist({
-  variable: "--font-geist-sans",
+const inter = Inter({
+  variable: "--font-sans",
   subsets: ["latin"],
   display: "swap",
 });
 
-const geistMono = Geist_Mono({
-  variable: "--font-geist-mono",
+const jetBrainsMono = JetBrains_Mono({
+  variable: "--font-mono",
   subsets: ["latin"],
   display: "swap",
 });
@@ -73,7 +73,7 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="en" className="dark" suppressHydrationWarning>
-      <body className={`${geistSans.variable} ${geistMono.variable} antialiased transition-colors duration-300`}>
+      <body className={`${inter.variable} ${jetBrainsMono.variable} antialiased transition-colors duration-300`}>
         <ThemeProvider defaultTheme="dark">
           <ToastProvider>
             <a

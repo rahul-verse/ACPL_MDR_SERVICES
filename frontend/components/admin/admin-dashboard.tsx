@@ -88,14 +88,14 @@ function LoginPanel({
     <main id="main-content" className="flex min-h-screen items-center justify-center bg-background px-5 py-12">
       <form
         onSubmit={handleSubmit(onSubmit)}
-        className="glass-panel-abnormal w-full max-w-md rounded-2xl p-8 shadow-panel backdrop-blur-2xl"
+        className="glass-panel-abnormal w-full max-w-md rounded-3xl p-8 shadow-lg backdrop-blur-2xl bg-white/95 border border-slate-200 dark:bg-[#090f20] dark:border-white/10"
         noValidate
       >
         <div className="flex h-14 w-14 items-center justify-center rounded-xl border border-indigo-500/30 bg-indigo-500/10 text-indigo-300 shadow-glow-indigo">
           <ShieldCheck aria-hidden className="h-7 w-7" />
         </div>
-        <h1 className="mt-6 text-2xl font-black text-white">ACPL SOC Login</h1>
-        <p className="mt-2 text-sm leading-6 text-slate-300">
+        <h1 className="mt-6 text-2xl font-black text-slate-900 dark:text-white">ACPL SOC Login</h1>
+        <p className="mt-2 text-sm leading-6 text-slate-700 dark:text-slate-300">
           Authenticate to access security operations, threat telemetry, and client enquiries.
         </p>
         <div className="mt-6 space-y-4">
@@ -110,7 +110,7 @@ function LoginPanel({
               autoComplete="email"
               aria-invalid={Boolean(errors.email)}
               aria-describedby={errors.email ? "admin-email-error" : undefined}
-              className={errors.email ? "border-red-400 focus-visible:ring-red-400" : "border-white/12 bg-[#030712] focus-visible:ring-indigo-400"}
+              className={errors.email ? "border-red-400 bg-red-50 text-slate-900 placeholder:text-slate-400 focus-visible:ring-red-400" : "border-slate-300 bg-slate-50 text-slate-900 placeholder:text-slate-500 shadow-sm focus-visible:ring-indigo-300 dark:border-white/12 dark:bg-[#020617] dark:text-white dark:placeholder:text-slate-400"}
               {...register("email")}
             />
             {errors.email ? (
@@ -130,7 +130,7 @@ function LoginPanel({
               autoComplete="current-password"
               aria-invalid={Boolean(errors.password)}
               aria-describedby={errors.password ? "admin-password-error" : undefined}
-              className={errors.password ? "border-red-400 focus-visible:ring-red-400" : "border-white/12 bg-[#030712] focus-visible:ring-indigo-400"}
+              className={errors.password ? "border-red-400 bg-red-50 text-slate-900 placeholder:text-slate-400 focus-visible:ring-red-400" : "border-slate-300 bg-slate-50 text-slate-900 placeholder:text-slate-500 shadow-sm focus-visible:ring-indigo-300 dark:border-white/12 dark:bg-[#020617] dark:text-white dark:placeholder:text-slate-400"}
               {...register("password")}
             />
             {errors.password ? (
@@ -338,7 +338,7 @@ function EnquiryManager({
           />
         </section>
 
-        <section className="mt-6 overflow-hidden rounded-2xl border border-slate-300 bg-white dark:border-white/10 dark:bg-[#060a14]/80 shadow-md backdrop-blur-2xl">
+        <section className="mt-6 overflow-hidden rounded-3xl border border-slate-200 bg-slate-50 shadow-md backdrop-blur-2xl transition-all duration-200 hover:shadow-xl dark:border-white/10 dark:bg-[#060a14]/85">
           {loading ? (
             <AdminTableSkeleton />
           ) : payload && payload.data.length > 0 ? (
@@ -497,7 +497,7 @@ function EnquiryRow({
   onInspect: () => void;
 }) {
   return (
-    <tr className="align-top text-slate-800 dark:text-slate-200 hover:bg-slate-50 dark:hover:bg-white/[0.02] border-b border-slate-300 dark:border-white/10">
+    <tr className="align-top text-slate-800 dark:text-slate-200 hover:bg-slate-50 dark:hover:bg-white/[0.02] border-b border-slate-300 dark:border-white/10 transition-colors duration-200">
       <td className="px-5 py-5">
         <p className="font-bold text-slate-900 dark:text-white">{enquiry.name}</p>
         <p className="mt-1 text-xs font-medium text-slate-600 dark:text-slate-400">{enquiry.email}</p>
@@ -531,7 +531,7 @@ function EnquiryCard({
   onInspect: () => void;
 }) {
   return (
-    <article className="rounded-xl border border-slate-300 bg-white p-5 shadow-sm dark:border-white/10 dark:bg-[#060a14]/70">
+    <article className="rounded-3xl border border-slate-300 bg-white p-5 shadow-sm transition-transform duration-200 hover:-translate-y-0.5 hover:shadow-lg dark:border-white/10 dark:bg-[#060a14]/70">
       <div className="flex items-start justify-between gap-3">
         <div>
           <p className="font-bold text-slate-900 dark:text-white">{enquiry.name}</p>
@@ -568,7 +568,7 @@ function StatusControl({
         value={enquiry.status}
         disabled={updating}
         onChange={(event) => onStatusChange(enquiry._id, event.target.value as EnquiryStatus)}
-        className="h-8 rounded-lg border border-slate-300 bg-white text-slate-900 font-bold dark:border-white/12 dark:bg-[#030712] dark:text-white px-2.5 text-xs focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-blue-600 disabled:opacity-50 shadow-sm"
+        className="h-8 rounded-lg border border-slate-300 bg-white text-slate-900 font-bold dark:border-white/12 dark:bg-[#030712] dark:text-white px-2.5 text-xs focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-blue-600 disabled:opacity-50 shadow-sm transition duration-200 ease-in-out hover:border-slate-400"
       >
         {ENQUIRY_STATUSES.map((item) => (
           <option key={item} value={item} className="bg-white text-slate-900 dark:bg-[#060a14] dark:text-white">

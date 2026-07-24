@@ -1,6 +1,6 @@
 "use client";
 
-import { Menu, ShieldCheck, X, Sun, Moon } from "lucide-react";
+import { LogIn, Menu, ShieldCheck, X, Sun, Moon } from "lucide-react";
 import Link from "next/link";
 import { useState } from "react";
 
@@ -67,6 +67,14 @@ export function SiteHeader() {
               <Moon className="h-5 w-5 text-indigo-600" />
             )}
           </Button>
+
+          <Link
+            href="/admin"
+            className="inline-flex h-9 items-center justify-center gap-1.5 rounded-xl border border-slate-300 bg-slate-50 px-3.5 text-xs font-bold text-slate-900 shadow-sm transition-colors hover:bg-slate-100 dark:border-white/12 dark:bg-white/[0.04] dark:text-white dark:hover:bg-white/[0.08]"
+          >
+            <LogIn aria-hidden className="h-3.5 w-3.5" />
+            Admin Login
+          </Link>
 
           <Button
             size="sm"
