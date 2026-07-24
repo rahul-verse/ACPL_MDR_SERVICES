@@ -1,4 +1,11 @@
-import { SiteHeader } from "@/components/marketing/site-header";
+import dynamic from "next/dynamic";
+
+const SiteHeader = dynamic(
+  () => import("@/components/marketing/site-header").then((m) => m.SiteHeader),
+  {
+    loading: () => <div className="h-16" aria-hidden />,
+  },
+);
 import { MdrPage } from "@/components/marketing/mdr-page";
 import { siteConfig } from "@/config/site";
 import { faqs, services } from "@/data/mdr";

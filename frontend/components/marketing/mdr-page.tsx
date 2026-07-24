@@ -7,7 +7,6 @@ import {
   Mail,
   Phone,
   Shield,
-  Search,
   Activity,
   ShieldAlert,
   Radio,
@@ -27,8 +26,27 @@ import {
   workflow,
 } from "@/data/mdr";
 import { siteConfig } from "@/config/site";
-import { ContactForm } from "@/components/marketing/contact-form";
-import { FaqSearch } from "@/components/marketing/faq-search";
+import dynamic from "next/dynamic";
+
+const FaqSearch = dynamic(
+  () => import("@/components/marketing/faq-search").then((m) => m.FaqSearch),
+  {
+    loading: () => (
+      <section id="faq" className="relative px-5 py-24">
+        <div className="mx-auto max-w-7xl">
+          <div className="mb-6 max-w-md">
+            <div className="h-12 rounded bg-slate-100/60 dark:bg-white/[0.03]" />
+          </div>
+        </div>
+      </section>
+    ),
+  },
+);
+
+const ContactForm = dynamic(
+  () => import("@/components/marketing/contact-form").then((m) => m.ContactForm),
+  { loading: () => <div className="h-80" /> },
+);
 
 export function MdrPage() {
   return (
