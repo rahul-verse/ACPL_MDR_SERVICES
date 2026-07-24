@@ -1,29 +1,47 @@
 # ACPL Systems MDR Platform
 
-Production-grade Managed Detection and Response website and enquiry operations dashboard for ACPL Systems Pvt. Ltd.
+A production-ready Managed Detection and Response website and operations dashboard for ACPL Systems Pvt. Ltd., designed for secure enquiry intake, threat visibility, and administrative review.
+
+## Project Overview
+
+This repository contains:
+
+- a Next.js 15 frontend for the public MDR experience and admin portal
+- a Node.js/Express backend for API services, enquiry handling, and admin authentication
+- a MongoDB-backed data layer for storing and managing enquiry records
 
 ## Project Structure
 
+```text
+frontend/   Next.js 15 App Router, React 19, TypeScript, Tailwind CSS
+backend/    Express API, MongoDB, JWT-based admin authentication
+README.md
 ```
-├── frontend/          Next.js 15 App Router (React 19, TypeScript, Tailwind)
-├── backend/           Node.js Express API (MongoDB, Mongoose, JWT)
-└── README.md
-```
 
-## Stack
+## Technology Stack
 
-**Frontend:** Next.js 15, React 19, TypeScript, Tailwind CSS, Framer Motion, React Hook Form + Zod
-
-**Backend:** Node.js, Express, MongoDB, Mongoose, Helmet, CORS, rate limiting, JWT admin auth
-
-## Local Setup
-
-### Prerequisites
-
-- Node.js 20+
-- MongoDB (local or Atlas)
+### Frontend
+- Next.js 15
+- React 19
+- TypeScript
+- Tailwind CSS
+- Framer Motion
+- React Hook Form + Zod
 
 ### Backend
+- Node.js
+- Express.js
+- MongoDB + Mongoose
+- Helmet, CORS, rate limiting
+- JWT-based admin authentication
+
+## Local Development Setup
+
+### Prerequisites
+- Node.js 20 or newer
+- MongoDB instance (local or Atlas)
+
+### 1. Backend Setup
 
 ```bash
 cd backend
@@ -32,9 +50,9 @@ cp .env.example .env
 npm run dev
 ```
 
-API: `http://localhost:4000`
+The backend will run on http://localhost:4000.
 
-### Frontend
+### 2. Frontend Setup
 
 ```bash
 cd frontend
@@ -43,30 +61,42 @@ cp .env.example .env.local
 npm run dev
 ```
 
-Frontend: `http://localhost:3000`
+The frontend will run on http://localhost:3000.
 
-## Environment Variables
+## Environment Configuration
 
-### Frontend (`frontend/.env.local`)
+### Frontend
+Create a file at `frontend/.env.local` with:
 
-| Variable | Purpose |
-| --- | --- |
-| `NEXT_PUBLIC_API_URL` | Browser-facing API base URL |
+```env
+NEXT_PUBLIC_API_URL=http://localhost:4000
+```
 
-### Backend (`backend/.env`)
+### Backend
+Create or update `backend/.env` using the values below:
 
-| Variable | Purpose |
-| --- | --- |
-| `PORT` | Express API port |
-| `MONGODB_URI` | MongoDB connection string |
-| `JWT_SECRET` | JWT signing secret (minimum 24 characters) |
-| `ADMIN_EMAIL` | Admin login email |
-| `ADMIN_PASSWORD` | Development admin password |
-| `ADMIN_PASSWORD_HASH` | Production bcrypt password hash |
-| `CORS_ORIGIN` | Comma-separated frontend origins |
-| `TRUST_PROXY` | Set to `true` behind a load balancer |
+```env
+PORT=4000
+MONGODB_URI=mongodb://127.0.0.1:27017/acpl_mdr_services
+CORS_ORIGIN=http://localhost:3000
+JWT_SECRET=replace-with-a-long-random-secret
+ADMIN_EMAIL=admin@acplsystems.com
+ADMIN_PASSWORD=12345678
+TRUST_PROXY=false
+```
 
-Production must use a strong `JWT_SECRET` and either `ADMIN_PASSWORD_HASH` or a strong rotated `ADMIN_PASSWORD`.
+### Admin Credentials
+
+The default admin login values are:
+
+- Email: `admin@acplsystems.com`
+- Password: `12345678`
+
+> For production, replace these values with strong, rotated credentials and store them in a secure secret manager.
+
+### Admin Enquiry Export
+
+The admin dashboard includes an export feature that allows enquiries to be downloaded as a CSV file for reporting and offline review.
 
 ## API Endpoints
 
@@ -78,25 +108,14 @@ Production must use a strong `JWT_SECRET` and either `ADMIN_PASSWORD_HASH` or a 
 - `GET /admin/enquiries`
 - `PATCH /admin/enquiries/:id/status`
 
-Admin routes require `Authorization: Bearer <token>`.
+Admin routes require the `Authorization: Bearer <token>` header.
 
 ## Verification
 
 ```bash
 # Frontend
-cd frontend && npm run build && npm run lint && npm run typecheck
+cd frontend && npm run build
 
 # Backend
-cd backend && npm run build && npm run typecheck
+cd backend && npm run build
 ```
-
-## Production Notes
-
-- Configure `CORS_ORIGIN` to the deployed frontend origin only.
-- Store secrets in your deployment platform secret manager.
-- Run MongoDB with backups, TLS, and least-privilege credentials.
-- Protect `/admin` with SSO, VPN, IP allowlisting, or an identity-aware proxy for enterprise deployments.
-
-## Deployment
-
-See [DEPLOYMENT.md](./DEPLOYMENT.md) for the Vercel (frontend) and Render (backend) setup.
