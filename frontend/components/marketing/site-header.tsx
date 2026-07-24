@@ -1,7 +1,8 @@
 "use client";
 
-import { LogIn, Menu, ShieldCheck, X, Sun, Moon } from "lucide-react";
+import { LogIn, Menu, X, Sun, Moon } from "lucide-react";
 import Link from "next/link";
+import Image from "next/image";
 import { useState } from "react";
 
 import { Button } from "@/components/ui/button";
@@ -20,21 +21,28 @@ export function SiteHeader() {
 
   return (
     <header className="fixed inset-x-0 top-0 z-50 border-b border-slate-300 bg-white/95 dark:border-white/10 dark:bg-[#030712]/80 backdrop-blur-2xl transition-colors duration-300 shadow-sm dark:shadow-none">
-      <div aria-hidden className="absolute inset-x-0 top-0 h-[1px] bg-gradient-to-r from-transparent via-indigo-500/50 via-cyan-400/50 to-transparent" />
+      <div aria-hidden className="absolute inset-x-0 top-0 h-[1px] bg-gradient-to-r from-transparent via-red-500/60 to-transparent" />
       <nav
         aria-label="Primary navigation"
         className="mx-auto flex h-16 max-w-7xl items-center justify-between px-5 sm:px-6 lg:px-8"
       >
         <div className="flex items-center gap-6">
           <Link href="/" className="flex items-center gap-3 group" aria-label="ACPL MDR home">
-            <span className="flex h-9 w-9 items-center justify-center rounded-xl border border-indigo-500/30 bg-indigo-500/10 text-indigo-600 dark:text-indigo-300 transition-all duration-300 group-hover:border-indigo-400 shadow-sm dark:group-hover:shadow-glow-indigo">
-              <ShieldCheck aria-hidden className="h-5 w-5" />
-            </span>
+            <div className="flex h-12 w-12 items-center justify-center overflow-hidden rounded-xl border border-slate-200 bg-white shadow-sm transition-all duration-300 group-hover:border-red-400/60 dark:border-white/10 dark:bg-white/10">
+              <Image
+                src="/acpl-logo.svg"
+                alt="ACPL Systems logo"
+                width={44}
+                height={44}
+                priority
+                className="h-9 w-9 object-contain"
+              />
+            </div>
             <div className="flex flex-col">
               <span className="text-sm font-extrabold uppercase tracking-[0.2em] text-slate-900 dark:text-white">
                 {siteConfig.company}
               </span>
-              <span className="text-[10px] uppercase tracking-widest text-indigo-600 dark:text-cyan-400 font-mono font-bold">
+              <span className="text-[10px] uppercase tracking-widest text-red-600 dark:text-red-300 font-mono font-bold">
                 Cybersecurity MDR
               </span>
             </div>
@@ -45,7 +53,7 @@ export function SiteHeader() {
           {navItems.map((item) => (
             <Link
               key={item.href}
-              className="rounded-lg px-3.5 py-2 text-xs font-bold uppercase tracking-wider text-slate-700 hover:bg-slate-100 hover:text-indigo-600 dark:text-slate-300 dark:hover:bg-white/[0.06] dark:hover:text-indigo-300 transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-indigo-400"
+              className="rounded-lg px-3.5 py-2 text-xs font-bold uppercase tracking-wider text-slate-700 hover:bg-slate-100 hover:text-red-600 dark:text-slate-300 dark:hover:bg-white/[0.06] dark:hover:text-red-300 transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-red-400"
               href={item.href}
             >
               {item.label}
@@ -64,7 +72,7 @@ export function SiteHeader() {
             {resolvedTheme === "dark" ? (
               <Sun className="h-5 w-5 text-amber-400" />
             ) : (
-              <Moon className="h-5 w-5 text-indigo-600" />
+              <Moon className="h-5 w-5 text-red-600" />
             )}
           </Button>
 
@@ -78,7 +86,7 @@ export function SiteHeader() {
 
           <Button
             size="sm"
-            className="bg-indigo-600 hover:bg-indigo-500 text-white font-bold text-xs uppercase tracking-wider shadow-sm border-0"
+            className="bg-red-600 hover:bg-red-500 text-white font-bold text-xs uppercase tracking-wider shadow-sm border-0"
             onClick={() => document.getElementById("contact")?.scrollIntoView({ behavior: "smooth" })}
           >
             Talk to MDR
@@ -96,7 +104,7 @@ export function SiteHeader() {
             {resolvedTheme === "dark" ? (
               <Sun className="h-5 w-5 text-amber-400" />
             ) : (
-              <Moon className="h-5 w-5 text-indigo-600" />
+              <Moon className="h-5 w-5 text-red-600" />
             )}
           </Button>
 
@@ -132,7 +140,7 @@ export function SiteHeader() {
               <Link
                 key={item.href}
                 href={item.href}
-                className="rounded-md px-3 py-2.5 text-sm font-semibold text-slate-800 hover:bg-slate-100 dark:text-slate-200 dark:hover:bg-white/[0.06] dark:hover:text-indigo-300"
+                className="rounded-md px-3 py-2.5 text-sm font-semibold text-slate-800 hover:bg-slate-100 hover:text-red-600 dark:text-slate-200 dark:hover:bg-white/[0.06] dark:hover:text-red-300"
                 onClick={() => setOpen(false)}
               >
                 {item.label}
@@ -140,13 +148,13 @@ export function SiteHeader() {
             ))}
             <Link
               href="/admin"
-              className="rounded-md px-3 py-2.5 text-sm font-semibold text-slate-800 hover:bg-slate-100 dark:text-slate-200 dark:hover:bg-white/[0.06] dark:hover:text-indigo-300"
+              className="rounded-md px-3 py-2.5 text-sm font-semibold text-slate-800 hover:bg-slate-100 dark:text-slate-200 dark:hover:bg-white/[0.06] dark:hover:text-red-300"
               onClick={() => setOpen(false)}
             >
               SOC Login
             </Link>
             <Button
-              className="mt-2 w-full justify-center bg-indigo-600 hover:bg-indigo-500 text-white font-bold"
+              className="mt-2 w-full justify-center bg-red-600 hover:bg-red-500 text-white font-bold"
               size="sm"
               onClick={() => {
                 setOpen(false);

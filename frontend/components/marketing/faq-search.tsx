@@ -41,11 +41,11 @@ export function FaqSearch() {
             filteredFaqs.map((item) => (
               <details
                 key={item.question}
-                className="group rounded-xl border border-white/10 bg-[#060a14]/70 p-5 transition-all hover:border-indigo-500/40 glass-panel-hover"
+                className="group rounded-xl border border-white/10 bg-[#060a14]/70 p-5 transition-all hover:border-red-500/40 glass-panel-hover"
               >
-                <summary className="flex cursor-pointer list-none items-center justify-between gap-4 rounded-md text-left text-base font-bold text-white focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-indigo-400">
+                <summary className="flex cursor-pointer list-none items-center justify-between gap-4 rounded-md text-left text-base font-bold text-white focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-red-400">
                   {item.question}
-                  <span className="rounded-lg border border-white/10 bg-white/[0.06] p-1.5 text-indigo-300 transition-transform group-open:rotate-90">
+                  <span className="rounded-lg border border-white/10 bg-white/[0.06] p-1.5 text-red-300 transition-transform group-open:rotate-90">
                     <ChevronRight aria-hidden className="h-4 w-4" />
                   </span>
                 </summary>

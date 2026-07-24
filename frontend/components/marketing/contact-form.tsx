@@ -84,7 +84,7 @@ export function ContactForm() {
       noValidate
     >
       <div className="mb-6 flex items-start gap-4 border-b border-slate-200 dark:border-white/10 pb-5">
-        <span className="flex h-11 w-11 shrink-0 items-center justify-center rounded-xl border border-indigo-500/30 bg-indigo-500/10 text-indigo-600 dark:text-indigo-300 shadow-sm dark:shadow-glow-indigo">
+        <span className="flex h-11 w-11 shrink-0 items-center justify-center rounded-xl border border-red-500/30 bg-red-500/10 text-red-600 dark:text-red-300 shadow-sm">
           <ShieldCheck aria-hidden className="h-6 w-6" />
         </span>
         <div>
@@ -103,7 +103,7 @@ export function ContactForm() {
             autoComplete="name"
             aria-invalid={Boolean(errors.name)}
             aria-describedby={errors.name ? "contact-name-error" : undefined}
-            className={errors.name ? "border-red-400 focus-visible:ring-red-400" : "border-slate-300 bg-white text-slate-900 dark:border-white/12 dark:bg-[#030712] dark:text-white focus-visible:ring-indigo-400"}
+            className={errors.name ? "border-red-400 focus-visible:ring-red-400" : "border-slate-300 bg-white text-slate-900 dark:border-white/12 dark:bg-[#030712] dark:text-white focus-visible:ring-red-400"}
             {...register("name")}
           />
         </Field>
@@ -116,7 +116,7 @@ export function ContactForm() {
             autoComplete="email"
             aria-invalid={Boolean(errors.email)}
             aria-describedby={errors.email ? "contact-email-error" : undefined}
-            className={errors.email ? "border-red-400 focus-visible:ring-red-400" : "border-slate-300 bg-white text-slate-900 dark:border-white/12 dark:bg-[#030712] dark:text-white focus-visible:ring-indigo-400"}
+            className={errors.email ? "border-red-400 focus-visible:ring-red-400" : "border-slate-300 bg-white text-slate-900 dark:border-white/12 dark:bg-[#030712] dark:text-white focus-visible:ring-red-400"}
             {...register("email")}
           />
         </Field>
@@ -128,7 +128,7 @@ export function ContactForm() {
             autoComplete="organization"
             aria-invalid={Boolean(errors.company)}
             aria-describedby={errors.company ? "contact-company-error" : undefined}
-            className={errors.company ? "border-red-400 focus-visible:ring-red-400" : "border-slate-300 bg-white text-slate-900 dark:border-white/12 dark:bg-[#030712] dark:text-white focus-visible:ring-indigo-400"}
+            className={errors.company ? "border-red-400 focus-visible:ring-red-400" : "border-slate-300 bg-white text-slate-900 dark:border-white/12 dark:bg-[#030712] dark:text-white focus-visible:ring-red-400"}
             {...register("company")}
           />
         </Field>
@@ -141,7 +141,7 @@ export function ContactForm() {
             autoComplete="tel"
             aria-invalid={Boolean(errors.phone)}
             aria-describedby={errors.phone ? "contact-phone-error" : undefined}
-            className={errors.phone ? "border-red-400 focus-visible:ring-red-400" : "border-slate-300 bg-white text-slate-900 dark:border-white/12 dark:bg-[#030712] dark:text-white focus-visible:ring-indigo-400"}
+            className={errors.phone ? "border-red-400 focus-visible:ring-red-400" : "border-slate-300 bg-white text-slate-900 dark:border-white/12 dark:bg-[#030712] dark:text-white focus-visible:ring-red-400"}
             {...register("phone")}
           />
         </Field>
@@ -152,7 +152,7 @@ export function ContactForm() {
             aria-invalid={Boolean(errors.service)}
             aria-describedby={errors.service ? "contact-service-error" : undefined}
             className={`flex h-11 w-full rounded-md border bg-white text-slate-900 dark:bg-[#030712] dark:text-white px-3 py-2 text-sm shadow-sm transition-colors focus-visible:outline-none focus-visible:ring-2 ${
-              errors.service ? "border-red-400 focus-visible:ring-red-400" : "border-slate-300 dark:border-white/12 focus-visible:ring-indigo-400"
+              errors.service ? "border-red-400 focus-visible:ring-red-400" : "border-slate-300 dark:border-white/12 focus-visible:ring-red-400"
             }`}
             {...register("service")}
           >
@@ -180,7 +180,7 @@ export function ContactForm() {
               placeholder="Detail your operational goals, e.g., 24x7 SOC coverage, Microsoft Defender integration, AWS cloud threat response, custom SLA..."
               aria-invalid={Boolean(errors.message)}
               aria-describedby={errors.message ? "contact-message-error" : undefined}
-              className={`min-h-[110px] bg-white text-slate-900 dark:bg-[#030712] dark:text-white ${errors.message ? "border-red-400 focus-visible:ring-red-400" : "border-slate-300 dark:border-white/12 focus-visible:ring-indigo-400"}`}
+              className={`min-h-[110px] bg-white text-slate-900 dark:bg-[#030712] dark:text-white ${errors.message ? "border-red-400 focus-visible:ring-red-400" : "border-slate-300 dark:border-white/12 focus-visible:ring-red-400"}`}
               {...register("message")}
             />
           </Field>
@@ -202,7 +202,7 @@ export function ContactForm() {
 
       <Button
         type="submit"
-        className="mt-6 w-full gap-2 font-bold bg-indigo-600 hover:bg-indigo-500 text-white shadow-sm dark:shadow-glow-indigo border-0"
+        className="mt-6 w-full gap-2 font-bold bg-red-600 hover:bg-red-500 text-white shadow-sm border-0"
         size="lg"
         disabled={isSubmitting}
         aria-busy={isSubmitting}

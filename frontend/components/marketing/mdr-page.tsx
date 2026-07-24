@@ -116,7 +116,7 @@ function Hero() {
         className={cn(
           "flex-1 rounded-lg py-2 transition-all font-bold",
           isActive
-            ? "bg-blue-600 text-white shadow-sm dark:shadow-glow-indigo"
+            ? "bg-red-600 text-white shadow-sm"
             : "text-slate-700 dark:text-slate-400"
         )}
         aria-pressed={isActive}
@@ -171,12 +171,12 @@ function Hero() {
 
   return (
     <section className="relative min-h-[94vh] px-5 pb-16 pt-28 md:pt-36">
-      <div className="absolute inset-x-0 top-16 h-[34rem] bg-[radial-gradient(ellipse_75%_50%_at_50%_0%,rgba(99,102,241,0.24),transparent_44rem)]" />
+      <div className="absolute inset-x-0 top-16 h-[34rem] bg-[radial-gradient(ellipse_75%_50%_at_50%_0%,rgba(220,38,38,0.16),transparent_44rem)]" />
       <div className="relative mx-auto grid max-w-7xl items-center gap-12 lg:grid-cols-[1.05fr_0.95fr]">
         <div className="max-w-3xl animate-fade-up">
           <h1 className="mt-6 text-4xl font-black leading-[1.04] tracking-tighter text-slate-900 dark:text-white sm:text-6xl lg:text-7xl">
             Autonomous Cyber Defense. <br />
-            <span className="bg-gradient-to-r from-indigo-600 via-indigo-500 to-cyan-500 dark:from-indigo-400 dark:via-cyan-300 dark:to-emerald-400 bg-clip-text text-transparent">
+            <span className="bg-gradient-to-r from-red-600 via-rose-500 to-rose-700 dark:from-red-400 dark:via-rose-300 dark:to-rose-500 bg-clip-text text-transparent">
               Human Expertise.
             </span>
           </h1>
@@ -187,7 +187,7 @@ function Hero() {
           <div className="mt-8 flex flex-col gap-4 sm:flex-row">
             <Link
               href="#contact"
-              className="inline-flex h-12 items-center justify-center gap-2.5 rounded-xl border-0 bg-indigo-600 px-6 text-base font-bold text-white shadow-sm transition-colors hover:bg-indigo-500 dark:shadow-glow-indigo"
+              className="inline-flex h-12 items-center justify-center gap-2.5 rounded-xl border-0 bg-red-600 px-6 text-base font-bold text-white shadow-sm transition-colors hover:bg-red-500"
             >
               Talk to ACPL MDR Team
               <ArrowRight aria-hidden className="h-5 w-5" />
@@ -197,7 +197,7 @@ function Hero() {
               className="inline-flex h-12 items-center justify-center gap-2.5 rounded-xl border border-slate-200 bg-white px-6 text-base font-bold text-slate-900 shadow-sm transition-colors hover:bg-slate-50 dark:border-white/10 dark:bg-white/[0.04] dark:text-white dark:hover:bg-white/[0.08]"
             >
               Explore SOC Pipeline
-              <ChevronRight aria-hidden className="h-5 w-5 text-indigo-600 dark:text-indigo-300" />
+              <ChevronRight aria-hidden className="h-5 w-5 text-red-600 dark:text-red-300" />
             </Link>
           </div>
 
@@ -205,9 +205,9 @@ function Hero() {
             {heroSignals.map((signal) => (
               <div
                 key={signal.label}
-                className="glass-panel-abnormal rounded-xl p-4 transition-all hover:border-indigo-500/40"
+                className="glass-panel-abnormal rounded-xl p-4 transition-all hover:border-red-500/40"
               >
-                <signal.icon aria-hidden className="h-5 w-5 text-indigo-600 dark:text-indigo-400" />
+                <signal.icon aria-hidden className="h-5 w-5 text-red-600 dark:text-red-400" />
                 <p className="mt-2 text-xs font-semibold uppercase tracking-wider text-slate-500 dark:text-slate-400">{signal.label}</p>
                 <p className="text-sm font-bold capitalize text-slate-900 dark:text-white">{signal.value}</p>
               </div>
@@ -217,14 +217,14 @@ function Hero() {
 
         {/* Multi-Tab Interactive SOC Command Visualizer Card */}
         <div className="relative animate-fade-up [animation-delay:120ms]">
-          <div aria-hidden className="absolute -inset-6 rounded-full bg-indigo-500/15 blur-3xl" />
+          <div aria-hidden className="absolute -inset-6 rounded-full bg-red-500/15 blur-3xl" />
           <div className="glass-panel-abnormal relative rounded-2xl p-6 shadow-panel backdrop-blur-2xl">
-            <div aria-hidden className="absolute top-0 left-0 right-0 h-[1px] bg-gradient-to-r from-transparent via-indigo-400 via-cyan-400 to-transparent" />
+            <div aria-hidden className="absolute top-0 left-0 right-0 h-[1px] bg-gradient-to-r from-transparent via-red-400 via-blue-400 to-transparent" />
             
             {/* Visualizer Header Tabs */}
             <div className="flex items-center justify-between border-b border-slate-300 dark:border-white/10 pb-4">
               <div className="flex items-center gap-2">
-                <span className="flex h-8 w-8 items-center justify-center rounded-lg border border-blue-600/40 bg-blue-50 text-blue-700 dark:border-indigo-500/30 dark:bg-indigo-500/10 dark:text-indigo-300">
+                <span className="flex h-8 w-8 items-center justify-center rounded-lg border border-red-600/40 bg-red-50 text-red-700 dark:border-red-500/30 dark:bg-red-500/10 dark:text-red-300">
                   <Terminal className="h-4 w-4" />
                 </span>
                 <span className="text-xs font-mono font-bold uppercase tracking-wider text-slate-900 dark:text-white">ACPL Command Visualizer</span>
@@ -256,11 +256,11 @@ function Hero() {
                         className={cn(
                           "rounded-lg border p-2.5 text-left transition-all text-xs font-medium",
                           idx === 0
-                            ? "border-blue-600 bg-blue-50 text-blue-900 dark:border-indigo-400 dark:bg-indigo-500/20 dark:text-white shadow-sm dark:shadow-glow-indigo"
+                            ? "border-red-600 bg-red-50 text-red-900 dark:border-red-400 dark:bg-red-500/20 dark:text-white shadow-sm"
                             : "border-slate-300 bg-slate-50 text-slate-800 hover:border-slate-400 dark:border-white/10 dark:bg-white/[0.02] dark:text-slate-400 dark:hover:border-white/20 dark:hover:text-slate-200"
                         )}
                       >
-                        <p className="font-mono text-[10px] font-bold text-blue-700 dark:text-indigo-300">SIGNAL 0{idx + 1}</p>
+                        <p className="font-mono text-[10px] font-bold text-red-700 dark:text-red-300">SIGNAL 0{idx + 1}</p>
                         <p className="mt-1 font-bold truncate text-slate-900 dark:text-slate-100">{sig.title}</p>
                       </div>
                     ))}
@@ -280,7 +280,7 @@ function Hero() {
                     <div className="mt-3 space-y-2 text-slate-800 dark:text-slate-300">
                       <div className="flex justify-between">
                         <span className="text-slate-600 dark:text-slate-400 font-semibold">Vector:</span>
-                        <span className="text-blue-700 dark:text-cyan-300 font-bold">{currentSignal.vector}</span>
+                        <span className="text-red-700 dark:text-red-300 font-bold">{currentSignal.vector}</span>
                       </div>
                       <div className="flex justify-between">
                         <span className="text-slate-600 dark:text-slate-400 font-semibold">Action:</span>
@@ -288,7 +288,7 @@ function Hero() {
                       </div>
                       <div className="flex justify-between">
                         <span className="text-slate-600 dark:text-slate-400 font-semibold">Status:</span>
-                        <span className="text-indigo-800 dark:text-indigo-300 font-bold">{currentSignal.status}</span>
+                        <span className="text-red-800 dark:text-red-300 font-bold">{currentSignal.status}</span>
                       </div>
                     </div>
                   </div>
@@ -304,11 +304,11 @@ function Hero() {
                         className={cn(
                           "rounded-lg border p-2.5 text-left transition-all text-xs font-medium",
                           idx === 0
-                            ? "border-blue-600 bg-blue-50 text-blue-900 dark:border-indigo-400 dark:bg-indigo-500/20 dark:text-white shadow-sm dark:shadow-glow-indigo"
+                            ? "border-red-600 bg-red-50 text-red-900 dark:border-red-400 dark:bg-red-500/20 dark:text-white shadow-sm"
                             : "border-slate-300 bg-slate-50 text-slate-800 hover:border-slate-400 dark:border-white/10 dark:bg-white/[0.02] dark:text-slate-400 dark:hover:border-white/20 dark:hover:text-slate-200"
                         )}
                       >
-                        <p className="font-mono text-[10px] font-bold text-blue-700 dark:text-indigo-300">TACTIC 0{idx + 1}</p>
+                        <p className="font-mono text-[10px] font-bold text-red-700 dark:text-red-300">TACTIC 0{idx + 1}</p>
                         <p className="mt-1 font-bold truncate text-slate-900 dark:text-slate-100">{it.title}</p>
                         <p className="mt-1 text-[11px] text-slate-600 dark:text-slate-300">{it.summary}</p>
                       </div>
@@ -343,11 +343,11 @@ function Hero() {
                         className={cn(
                           "rounded-lg border p-2.5 text-left transition-all text-xs font-medium",
                           idx === 0
-                            ? "border-blue-600 bg-blue-50 text-blue-900 dark:border-indigo-400 dark:bg-indigo-500/20 dark:text-white shadow-sm dark:shadow-glow-indigo"
+                            ? "border-red-600 bg-red-50 text-red-900 dark:border-red-400 dark:bg-red-500/20 dark:text-white shadow-sm"
                             : "border-slate-300 bg-slate-50 text-slate-800 hover:border-slate-400 dark:border-white/10 dark:bg-white/[0.02] dark:text-slate-400 dark:hover:border-white/20 dark:hover:text-slate-200"
                         )}
                       >
-                        <p className="font-mono text-[10px] font-bold text-blue-700 dark:text-indigo-300">PLAY 0{idx + 1}</p>
+                        <p className="font-mono text-[10px] font-bold text-red-700 dark:text-red-300">PLAY 0{idx + 1}</p>
                         <p className="mt-1 font-bold truncate text-slate-900 dark:text-slate-100">{it.title}</p>
                         <p className="mt-1 text-[11px] text-slate-600 dark:text-slate-300">{it.summary}</p>
                       </div>
@@ -415,9 +415,9 @@ function PartnerMarquee() {
           {partners.map((partner) => (
             <span
               key={partner}
-              className="inline-flex items-center gap-2 rounded-full border border-slate-300 bg-white px-4 py-2 text-xs font-bold text-slate-800 shadow-sm dark:border-white/10 dark:bg-white/[0.03] dark:text-slate-300 transition-colors hover:border-indigo-500/40 hover:text-indigo-600 dark:hover:text-white"
+              className="inline-flex items-center gap-2 rounded-full border border-slate-300 bg-white px-4 py-2 text-xs font-bold text-slate-800 shadow-sm dark:border-white/10 dark:bg-white/[0.03] dark:text-slate-300 transition-colors hover:border-red-500/40 hover:text-red-600 dark:hover:text-white"
             >
-              <Check aria-hidden className="h-3.5 w-3.5 text-indigo-600 dark:text-cyan-400" />
+              <Check aria-hidden className="h-3.5 w-3.5 text-red-600 dark:text-red-400" />
               {partner}
             </span>
           ))}
@@ -440,7 +440,7 @@ function ServicesBento() {
         {/* Spotlight Featured Card (Spans 2 columns on desktop) */}
         <div className="glass-panel-abnormal glass-panel-hover rounded-2xl p-8 md:col-span-2 relative overflow-hidden">
           <div className="flex items-center gap-3">
-            <span className="flex h-12 w-12 items-center justify-center rounded-xl border border-indigo-500/30 bg-indigo-500/10 text-indigo-600 dark:text-indigo-300 shadow-sm dark:shadow-glow-indigo">
+            <span className="flex h-12 w-12 items-center justify-center rounded-xl border border-red-500/30 bg-red-500/10 text-red-600 dark:text-red-300 shadow-sm">
               <Activity className="h-6 w-6" />
             </span>
           </div>
@@ -461,7 +461,7 @@ function ServicesBento() {
             </div>
             <div>
               <p className="text-xs font-mono text-slate-500 dark:text-slate-400 font-bold">Signal Accuracy</p>
-              <p className="mt-1 font-bold text-indigo-700 dark:text-cyan-300">99.98% Validated</p>
+              <p className="mt-1 font-bold text-red-700 dark:text-red-300">99.98% Validated</p>
             </div>
           </div>
         </div>
@@ -469,7 +469,7 @@ function ServicesBento() {
         {/* Secondary Bento Card 1 */}
         <div className="glass-panel-abnormal glass-panel-hover rounded-2xl p-8 flex flex-col justify-between">
           <div>
-            <span className="flex h-12 w-12 items-center justify-center rounded-xl border border-cyan-500/30 bg-cyan-500/10 text-cyan-700 dark:text-cyan-300">
+            <span className="flex h-12 w-12 items-center justify-center rounded-xl border border-red-500/30 bg-red-500/10 text-red-600 dark:text-red-300">
               <ShieldAlert className="h-6 w-6" />
             </span>
             <h3 className="mt-6 text-xl font-bold text-slate-900 dark:text-white">Proactive Threat Hunting</h3>
@@ -477,7 +477,7 @@ function ServicesBento() {
               Adversary eviction operations using custom YARA rules, memory forensics, and MITRE ATT&CK framework mapping.
             </p>
           </div>
-          <Link href="#contact" className="mt-6 inline-flex items-center gap-1.5 text-xs font-bold uppercase tracking-wider text-indigo-600 hover:text-indigo-700 dark:text-indigo-400 dark:hover:text-indigo-300">
+          <Link href="#contact" className="mt-6 inline-flex items-center gap-1.5 text-xs font-bold uppercase tracking-wider text-red-600 hover:text-red-700 dark:text-red-400 dark:hover:text-red-300">
             <span>Explore Hunting</span>
             <ChevronRight className="h-4 w-4" />
           </Link>
@@ -486,7 +486,7 @@ function ServicesBento() {
         {/* Secondary Bento Card 2 */}
         <div className="glass-panel-abnormal glass-panel-hover rounded-2xl p-8 flex flex-col justify-between">
           <div>
-            <span className="flex h-12 w-12 items-center justify-center rounded-xl border border-emerald-500/30 bg-emerald-500/10 text-emerald-700 dark:text-emerald-300">
+            <span className="flex h-12 w-12 items-center justify-center rounded-xl border border-red-500/30 bg-red-500/10 text-red-600 dark:text-red-300">
               <Cpu className="h-6 w-6" />
             </span>
             <h3 className="mt-6 text-xl font-bold text-slate-900 dark:text-white">Cloud & Identity Protection</h3>
@@ -494,7 +494,7 @@ function ServicesBento() {
               Continuous monitoring of AWS, Azure, GCP, and Okta sessions to neutralize privilege escalation vectors.
             </p>
           </div>
-          <Link href="#contact" className="mt-6 inline-flex items-center gap-1.5 text-xs font-bold uppercase tracking-wider text-indigo-600 hover:text-indigo-700 dark:text-indigo-400 dark:hover:text-indigo-300">
+          <Link href="#contact" className="mt-6 inline-flex items-center gap-1.5 text-xs font-bold uppercase tracking-wider text-red-600 hover:text-red-700 dark:text-red-400 dark:hover:text-red-300">
             <span>Cloud Telemetry</span>
             <ChevronRight className="h-4 w-4" />
           </Link>
@@ -503,7 +503,7 @@ function ServicesBento() {
         {/* Secondary Bento Card 3 (Spans 2 columns) */}
         <div className="glass-panel-abnormal glass-panel-hover rounded-2xl p-8 md:col-span-2 flex flex-col justify-between">
           <div>
-            <span className="flex h-12 w-12 items-center justify-center rounded-xl border border-amber-500/30 bg-amber-500/10 text-amber-700 dark:text-amber-300">
+            <span className="flex h-12 w-12 items-center justify-center rounded-xl border border-red-500/30 bg-red-500/10 text-red-600 dark:text-red-300">
               <FileText className="h-6 w-6" />
             </span>
             <h3 className="mt-6 text-xl font-bold text-slate-900 dark:text-white">Incident Response & Executive Reporting</h3>
@@ -536,7 +536,7 @@ function FeaturesMatrix() {
             key={feature.label}
             className="flex items-center gap-4 rounded-2xl border border-slate-200 bg-white p-5 transition-all dark:border-white/10 dark:bg-[#060a14]/80 glass-panel-hover"
           >
-            <span className="flex h-11 w-11 shrink-0 items-center justify-center rounded-xl border border-indigo-500/30 bg-indigo-500/10 text-indigo-600 dark:text-indigo-300">
+            <span className="flex h-11 w-11 shrink-0 items-center justify-center rounded-xl border border-red-500/30 bg-red-500/10 text-red-600 dark:text-red-300">
               <feature.icon aria-hidden className="h-5 w-5" />
             </span>
             <span className="text-sm font-bold text-slate-900 dark:text-slate-100">{feature.label}</span>
@@ -563,7 +563,7 @@ function Benefits() {
             </span>
             <h3 className="mt-5 text-xl font-bold text-slate-900 dark:text-white">{benefit.title}</h3>
             <p className="mt-3 text-sm leading-6 text-slate-700 dark:text-slate-300">{benefit.description}</p>
-            <div aria-hidden className="absolute -right-12 -top-12 h-36 w-36 rounded-full bg-indigo-500/10 blur-3xl" />
+            <div aria-hidden className="absolute -right-12 -top-12 h-36 w-36 rounded-full bg-red-500/10 blur-3xl" />
           </MotionPanel>
         ))}
       </div>
@@ -588,7 +588,7 @@ function Workflow() {
               className={cn(
                 "rounded-2xl border p-6 transition-all duration-300 backdrop-blur-xl glass-panel-abnormal",
                 isActive
-                  ? "border-indigo-600 bg-indigo-50/80 dark:border-indigo-400 dark:bg-indigo-950/30 shadow-sm dark:shadow-glow-indigo"
+                  ? "border-red-600 bg-red-50/80 dark:border-red-400 dark:bg-red-950/30 shadow-sm"
                   : "border-slate-200 bg-white dark:border-white/10 dark:bg-[#060a14]/70 hover:border-slate-300 dark:hover:border-white/20",
               )}
             >
@@ -597,13 +597,13 @@ function Workflow() {
                   className={cn(
                     "flex h-12 w-12 items-center justify-center rounded-xl border transition-colors",
                     isActive
-                      ? "border-indigo-500/40 bg-indigo-500/10 text-indigo-600 dark:text-indigo-200"
+                      ? "border-red-500/40 bg-red-500/10 text-red-600 dark:text-red-200"
                       : "border-slate-200 bg-slate-100 text-slate-700 dark:border-white/10 dark:bg-white/[0.04] dark:text-slate-300",
                   )}
                 >
                   <step.icon aria-hidden className="h-6 w-6" />
                 </span>
-                <span className="font-mono text-xs font-bold text-indigo-600 dark:text-amber-400">STAGE 0{index + 1}</span>
+                <span className="font-mono text-xs font-bold text-red-600 dark:text-red-400">STAGE 0{index + 1}</span>
               </div>
               <h3 className="mt-6 text-lg font-bold text-slate-900 dark:text-white">{step.title}</h3>
               <p className="mt-3 text-sm leading-6 text-slate-700 dark:text-slate-300">{step.description}</p>
@@ -652,7 +652,7 @@ function DifferentiatorMatrix() {
           <thead>
             <tr className="border-b border-slate-200 dark:border-white/10 text-xs font-mono uppercase tracking-wider text-slate-500 dark:text-slate-400">
               <th className="pb-4 font-bold">Operational Metric</th>
-              <th className="pb-4 font-bold text-indigo-600 dark:text-indigo-300">ACPL MDR (24x7 India SOC)</th>
+              <th className="pb-4 font-bold text-red-600 dark:text-red-300">ACPL MDR (24x7 India SOC)</th>
               <th className="pb-4 font-bold text-slate-500 dark:text-slate-400">Generic Alert Software</th>
             </tr>
           </thead>
@@ -680,12 +680,12 @@ function DifferentiatorMatrix() {
 function Statistics() {
   return (
     <section className="relative px-5 py-16">
-      <div className="mx-auto max-w-7xl overflow-hidden rounded-2xl border border-slate-300 bg-white p-8 shadow-md dark:border-indigo-500/30 dark:bg-gradient-to-r dark:from-indigo-950/40 dark:via-[#060a14]/90 dark:to-cyan-950/40 dark:shadow-panel backdrop-blur-2xl md:p-10">
+      <div className="mx-auto max-w-7xl overflow-hidden rounded-2xl border border-slate-300 bg-white p-8 shadow-md dark:border-red-500/20 dark:bg-gradient-to-r dark:from-red-950/30 dark:via-[#060a14]/90 dark:to-slate-950/40 dark:shadow-panel backdrop-blur-2xl md:p-10">
         <div className="grid gap-8 sm:grid-cols-2 lg:grid-cols-4">
           {stats.map((stat) => (
             <div key={stat.label} aria-label={`${stat.value} ${stat.label}`} className="text-center sm:text-left">
               <span className="text-4xl font-black tracking-tight text-slate-900 dark:text-white md:text-5xl">{stat.value}</span>
-              <p className="mt-2 text-xs font-bold uppercase tracking-wider text-blue-700 dark:text-indigo-300">{stat.label}</p>
+              <p className="mt-2 text-xs font-bold uppercase tracking-wider text-red-700 dark:text-red-300">{stat.label}</p>
             </div>
           ))}
         </div>
@@ -711,29 +711,29 @@ function Contact() {
             <span className="rounded-full border border-emerald-500/30 bg-emerald-500/10 px-3 py-1 text-xs font-mono font-bold text-emerald-700 dark:text-emerald-300">
               ISO 27001 Certified
             </span>
-            <span className="rounded-full border border-indigo-500/30 bg-indigo-500/10 px-3 py-1 text-xs font-mono font-bold text-indigo-700 dark:text-cyan-300">
+            <span className="rounded-full border border-red-500/30 bg-red-500/10 px-3 py-1 text-xs font-mono font-bold text-red-700 dark:text-red-300">
               SOC 2 Type II Compliant
             </span>
-            <span className="rounded-full border border-blue-500/30 bg-blue-500/10 px-3 py-1 text-xs font-mono font-bold text-blue-700 dark:text-indigo-300">
+            <span className="rounded-full border border-red-500/30 bg-red-500/10 px-3 py-1 text-xs font-mono font-bold text-red-700 dark:text-red-300">
               CERT-In Empanelled
             </span>
           </div>
 
           <div className="mt-10 grid gap-4">
             <Link
-              className="flex items-center gap-3.5 text-sm font-bold text-slate-800 hover:text-indigo-600 dark:text-slate-200 dark:hover:text-indigo-300 transition-colors"
+              className="flex items-center gap-3.5 text-sm font-bold text-slate-800 hover:text-red-600 dark:text-slate-200 dark:hover:text-red-300 transition-colors"
               href={`mailto:${siteConfig.links.email}`}
             >
-              <span className="flex h-10 w-10 items-center justify-center rounded-xl border border-slate-300 bg-white text-indigo-600 shadow-sm dark:border-white/10 dark:bg-white/[0.04] dark:text-indigo-300">
+              <span className="flex h-10 w-10 items-center justify-center rounded-xl border border-slate-300 bg-white text-red-600 shadow-sm dark:border-white/10 dark:bg-white/[0.04] dark:text-red-300">
                 <Mail aria-hidden className="h-5 w-5" />
               </span>
               {siteConfig.links.email}
             </Link>
             <Link
-              className="flex items-center gap-3.5 text-sm font-bold text-slate-800 hover:text-indigo-600 dark:text-slate-200 dark:hover:text-indigo-300 transition-colors"
+              className="flex items-center gap-3.5 text-sm font-bold text-slate-800 hover:text-red-600 dark:text-slate-200 dark:hover:text-red-300 transition-colors"
               href={`tel:${siteConfig.links.phone.replace(/\s/g, "")}`}
             >
-              <span className="flex h-10 w-10 items-center justify-center rounded-xl border border-slate-300 bg-white text-indigo-600 shadow-sm dark:border-white/10 dark:bg-white/[0.04] dark:text-indigo-300">
+              <span className="flex h-10 w-10 items-center justify-center rounded-xl border border-slate-300 bg-white text-red-600 shadow-sm dark:border-white/10 dark:bg-white/[0.04] dark:text-red-300">
                 <Phone aria-hidden className="h-5 w-5" />
               </span>
               {siteConfig.links.phone}
@@ -749,7 +749,7 @@ function Contact() {
 function FooterCTA() {
   return (
     <section className="relative px-5 py-12">
-      <div className="mx-auto max-w-7xl overflow-hidden rounded-3xl border border-slate-300 bg-gradient-to-r from-blue-900 via-indigo-900 to-slate-900 p-8 shadow-xl dark:border-indigo-500/30 md:p-12">
+      <div className="mx-auto max-w-7xl overflow-hidden rounded-3xl border border-slate-300 bg-gradient-to-r from-red-900 via-red-800 to-slate-900 p-8 shadow-xl dark:border-red-500/30 md:p-12">
         <div className="relative z-10 flex flex-col items-start justify-between gap-8 md:flex-row md:items-center">
           <div className="max-w-2xl">
             <h2 className="mt-4 text-3xl font-black tracking-tight text-white md:text-4xl">
@@ -761,7 +761,7 @@ function FooterCTA() {
           </div>
             <Link
               href="#contact"
-              className="inline-flex items-center justify-center rounded-xl bg-blue-600 px-6 py-3 text-sm font-bold uppercase tracking-wider text-white shadow-md transition-colors duration-200 hover:bg-blue-500"
+              className="inline-flex items-center justify-center rounded-xl bg-red-600 px-6 py-3 text-sm font-bold uppercase tracking-wider text-white shadow-md transition-colors duration-200 hover:bg-red-500"
             >
               Request MDR Assessment
               <ArrowRight className="ml-2 h-4 w-4" />
@@ -777,7 +777,7 @@ function Footer() {
     <footer className="border-t border-slate-200 bg-slate-100 dark:border-white/10 dark:bg-[#030712] px-5 py-12">
       <div className="mx-auto flex max-w-7xl flex-col gap-6 text-sm text-slate-600 dark:text-slate-400 md:flex-row md:items-center md:justify-between">
         <div className="flex items-center gap-3">
-          <span className="flex h-10 w-10 items-center justify-center rounded-xl border border-indigo-500/30 bg-indigo-500/10 text-indigo-600 dark:text-indigo-300">
+          <span className="flex h-10 w-10 items-center justify-center rounded-xl border border-red-500/30 bg-red-500/10 text-red-600 dark:text-red-300">
             <Shield aria-hidden className="h-5 w-5" />
           </span>
           <div>
@@ -815,7 +815,7 @@ function Section({
     <section id={id} className="relative px-5 py-20 md:py-24">
       <div className="mx-auto max-w-7xl">
         <div className="mb-12 max-w-3xl">
-          <p className="text-xs font-mono font-bold uppercase tracking-[0.2em] text-indigo-600 dark:text-cyan-400">
+          <p className="text-xs font-mono font-bold uppercase tracking-[0.2em] text-red-600 dark:text-red-400">
             {eyebrow}
           </p>
           <h2 className="mt-4 text-3xl font-black leading-tight tracking-tight text-slate-900 dark:text-white md:text-5xl">
