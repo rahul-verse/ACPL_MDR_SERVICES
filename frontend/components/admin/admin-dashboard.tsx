@@ -2,6 +2,7 @@
 
 import { zodResolver } from "@hookform/resolvers/zod";
 import {
+  ArrowLeft,
   ChevronLeft,
   ChevronRight,
   Download,
@@ -48,6 +49,27 @@ export function AdminDashboard() {
   return <EnquiryManager token={token} onLogout={() => setToken(null)} />;
 }
 
+function BackButton() {
+  function goBack() {
+    if (window.history.length > 1) {
+      window.history.back();
+      return;
+    }
+    window.location.href = "/";
+  }
+
+  return (
+    <button
+      type="button"
+      onClick={goBack}
+      className="inline-flex items-center gap-2 rounded-full border border-slate-300 bg-white/90 px-3 py-2 text-sm font-semibold text-slate-800 shadow-sm transition hover:bg-slate-50 dark:border-white/10 dark:bg-[#060a14]/90 dark:text-slate-200 dark:hover:bg-white/[0.08]"
+    >
+      <ArrowLeft aria-hidden className="h-4 w-4" />
+      Back
+    </button>
+  );
+}
+
 function LoginPanel({
   onAuthenticated,
 }: {
@@ -85,7 +107,10 @@ function LoginPanel({
   }
 
   return (
-    <main id="main-content" className="flex min-h-screen items-center justify-center bg-background px-5 py-12">
+    <main id="main-content" className="relative flex min-h-screen items-center justify-center bg-background px-5 py-12">
+      <div className="absolute left-5 top-5 z-10">
+        <BackButton />
+      </div>
       <form
         onSubmit={handleSubmit(onSubmit)}
         className="glass-panel-abnormal w-full max-w-md rounded-3xl p-8 shadow-lg backdrop-blur-2xl bg-white/95 border border-slate-200 dark:bg-[#090f20] dark:border-white/10"
@@ -276,6 +301,7 @@ function EnquiryManager({
             </h1>
           </div>
           <div className="flex flex-wrap items-center gap-3">
+            <BackButton />
             <Button variant="secondary" onClick={exportCSV} disabled={!payload || payload.data.length === 0}>
               <Download aria-hidden className="h-4 w-4 text-blue-700 dark:text-cyan-300" />
               Export CSV

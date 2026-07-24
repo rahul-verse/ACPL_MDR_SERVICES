@@ -126,6 +126,49 @@ function Hero() {
     );
   }
 
+  // Lightweight content for ATT&CK and SOC tabs to match the Threat Stream layout/height
+  const attackItems = [
+    {
+      title: "Initial Access",
+      summary: "Phishing & misconfigured cloud ACLs",
+      detail: "Coverage: Email prevention + cloud IAM monitoring. Detections tuned to reduce false positives.",
+      metric: "95%",
+    },
+    {
+      title: "Credential Access",
+      summary: "Brute force, credential stuffing, token theft",
+      detail: "Enriched telemetry with identity context and session anomalies mapped to ATT&CK techniques.",
+      metric: "99%",
+    },
+    {
+      title: "Exfiltration",
+      summary: "Data staging to external endpoints",
+      detail: "Network & cloud storage egress controls plus behavioral baselining for sensitive buckets.",
+      metric: "90%",
+    },
+  ];
+
+  const socItems = [
+    {
+      title: "Triage",
+      summary: "Validate, enrich, and classify alerts",
+      detail: "Analyst play: quick enrichment + severity assessment, route to containment or hunt.",
+      metric: "Avg 3m",
+    },
+    {
+      title: "Contain",
+      summary: "Isolate hosts, revoke credentials",
+      detail: "Pre-authorized containment actions reduce time-to-isolate with audit trails.",
+      metric: "<15m",
+    },
+    {
+      title: "Recover",
+      summary: "Forensics, remediation, and lessons",
+      detail: "Post-incident RCA, artifacts for compliance, and follow-up hardening tasks.",
+      metric: "Board-ready",
+    },
+  ];
+
   return (
     <section className="relative min-h-[94vh] px-5 pb-16 pt-28 md:pt-36">
       <div className="absolute inset-x-0 top-16 h-[34rem] bg-[radial-gradient(ellipse_75%_50%_at_50%_0%,rgba(99,102,241,0.24),transparent_44rem)]" />
@@ -253,16 +296,80 @@ function Hero() {
               )}
 
               {activeTab === "attack" && (
-                <div className="mt-2 p-3 text-sm text-slate-700 dark:text-slate-300">
-                  <p className="font-bold">ATT&CK Matrix</p>
-                  <p className="mt-2">ATT&CK mapping and detection coverage summary. For details contact the team.</p>
+                <div className="mt-4 animate-in fade-in">
+                  <div className="grid grid-cols-3 gap-2">
+                    {attackItems.map((it, idx) => (
+                      <div
+                        key={it.title}
+                        className={cn(
+                          "rounded-lg border p-2.5 text-left transition-all text-xs font-medium",
+                          idx === 0
+                            ? "border-blue-600 bg-blue-50 text-blue-900 dark:border-indigo-400 dark:bg-indigo-500/20 dark:text-white shadow-sm dark:shadow-glow-indigo"
+                            : "border-slate-300 bg-slate-50 text-slate-800 hover:border-slate-400 dark:border-white/10 dark:bg-white/[0.02] dark:text-slate-400 dark:hover:border-white/20 dark:hover:text-slate-200"
+                        )}
+                      >
+                        <p className="font-mono text-[10px] font-bold text-blue-700 dark:text-indigo-300">TACTIC 0{idx + 1}</p>
+                        <p className="mt-1 font-bold truncate text-slate-900 dark:text-slate-100">{it.title}</p>
+                        <p className="mt-1 text-[11px] text-slate-600 dark:text-slate-300">{it.summary}</p>
+                      </div>
+                    ))}
+                  </div>
+
+                  <div className="mt-4 rounded-xl border border-slate-300 bg-slate-50 p-4 font-mono text-xs dark:border-white/10 dark:bg-[#030712]/90">
+                    <div className="flex items-center justify-between border-b border-slate-300 dark:border-white/10 pb-2.5">
+                      <span className="font-bold text-slate-900 dark:text-white flex items-center gap-2">
+                        <ShieldAlert className="h-4 w-4 text-amber-600 dark:text-amber-400" />
+                        {attackItems[0].title}
+                      </span>
+                      <span className="rounded bg-emerald-50 px-2 py-0.5 text-[10px] font-bold text-slate-900 border border-slate-200 dark:border-white/10">
+                        Coverage: {attackItems[0].metric}
+                      </span>
+                    </div>
+
+                    <div className="mt-3 space-y-2 text-slate-800 dark:text-slate-300">
+                      <p className="text-sm font-bold">Summary</p>
+                      <p className="text-xs">{attackItems[0].detail}</p>
+                    </div>
+                  </div>
                 </div>
               )}
 
               {activeTab === "soc" && (
-                <div className="mt-2 p-3 text-sm text-slate-700 dark:text-slate-300">
-                  <p className="font-bold">SOC Playbook</p>
-                  <p className="mt-2">Playbooks and runbooks are available on request — reach out via the contact section.</p>
+                <div className="mt-4 animate-in fade-in">
+                  <div className="grid grid-cols-3 gap-2">
+                    {socItems.map((it, idx) => (
+                      <div
+                        key={it.title}
+                        className={cn(
+                          "rounded-lg border p-2.5 text-left transition-all text-xs font-medium",
+                          idx === 0
+                            ? "border-blue-600 bg-blue-50 text-blue-900 dark:border-indigo-400 dark:bg-indigo-500/20 dark:text-white shadow-sm dark:shadow-glow-indigo"
+                            : "border-slate-300 bg-slate-50 text-slate-800 hover:border-slate-400 dark:border-white/10 dark:bg-white/[0.02] dark:text-slate-400 dark:hover:border-white/20 dark:hover:text-slate-200"
+                        )}
+                      >
+                        <p className="font-mono text-[10px] font-bold text-blue-700 dark:text-indigo-300">PLAY 0{idx + 1}</p>
+                        <p className="mt-1 font-bold truncate text-slate-900 dark:text-slate-100">{it.title}</p>
+                        <p className="mt-1 text-[11px] text-slate-600 dark:text-slate-300">{it.summary}</p>
+                      </div>
+                    ))}
+                  </div>
+
+                  <div className="mt-4 rounded-xl border border-slate-300 bg-slate-50 p-4 font-mono text-xs dark:border-white/10 dark:bg-[#030712]/90">
+                    <div className="flex items-center justify-between border-b border-slate-300 dark:border-white/10 pb-2.5">
+                      <span className="font-bold text-slate-900 dark:text-white flex items-center gap-2">
+                        <ShieldAlert className="h-4 w-4 text-amber-600 dark:text-amber-400" />
+                        {socItems[0].title}
+                      </span>
+                      <span className="rounded bg-emerald-50 px-2 py-0.5 text-[10px] font-bold text-slate-900 border border-slate-200 dark:border-white/10">
+                        SLA: {socItems[0].metric}
+                      </span>
+                    </div>
+
+                    <div className="mt-3 space-y-2 text-slate-800 dark:text-slate-300">
+                      <p className="text-sm font-bold">Runbook</p>
+                      <p className="text-xs">{socItems[0].detail}</p>
+                    </div>
+                  </div>
                 </div>
               )}
             </div>
