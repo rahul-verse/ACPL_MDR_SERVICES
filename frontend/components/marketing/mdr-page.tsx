@@ -1,5 +1,7 @@
+"use client";
+
 import Link from "next/link";
-import type { ReactNode } from "react";
+import { useState, type ReactNode } from "react";
 import {
   ArrowRight,
   Check,
@@ -98,6 +100,31 @@ function Hero() {
   ];
 
   const currentSignal = threatSignals[0];
+  const [activeTab, setActiveTab] = useState<"threat" | "attack" | "soc">("threat");
+
+  function TabButton({
+    label,
+    id,
+  }: {
+    label: string;
+    id: "threat" | "attack" | "soc";
+  }) {
+    const isActive = activeTab === id;
+    return (
+      <button
+        onClick={() => setActiveTab(id)}
+        className={cn(
+          "flex-1 rounded-lg py-2 transition-all font-bold",
+          isActive
+            ? "bg-blue-600 text-white shadow-sm dark:shadow-glow-indigo"
+            : "text-slate-700 dark:text-slate-400"
+        )}
+        aria-pressed={isActive}
+      >
+        {label}
+      </button>
+    );
+  }
 
   return (
     <section className="relative min-h-[94vh] px-5 pb-16 pt-28 md:pt-36">
@@ -165,81 +192,79 @@ function Hero() {
               </span>
             </div>
 
-            {/* View Switching Tabs */}
-            <div className="mt-4 flex rounded-xl border border-slate-300 bg-slate-100 dark:border-white/10 dark:bg-[#030712] p-1 text-xs font-semibold">
-              <span
-                className={cn(
-                  "flex-1 rounded-lg py-2 transition-all font-bold",
-                  "bg-blue-600 text-white shadow-sm dark:shadow-glow-indigo"
-                )}
-              >
-                Threat Stream
-              </span>
-              <span
-                className={cn(
-                  "flex-1 rounded-lg py-2 transition-all font-bold",
-                  "text-slate-700 dark:text-slate-400"
-                )}
-              >
-                ATT&CK Matrix
-              </span>
-              <span
-                className={cn(
-                  "flex-1 rounded-lg py-2 transition-all font-bold",
-                  "text-slate-700 dark:text-slate-400"
-                )}
-              >
-                SOC Playbook
-              </span>
-            </div>
+                {/* View Switching Tabs (now interactive) */}
+                <div className="mt-4 flex rounded-xl border border-slate-300 bg-slate-100 dark:border-white/10 dark:bg-[#030712] p-1 text-xs font-semibold">
+                  {/* make tabs interactive but lightweight to avoid performance hits on mobile */}
+                  {/** Use minimal state to toggle views without heavy rerenders **/}
+                  {/* Rendered as buttons for accessibility */}
+                  <TabButton label="Threat Stream" id="threat" />
+                  <TabButton label="ATT&CK Matrix" id="attack" />
+                  <TabButton label="SOC Playbook" id="soc" />
+                </div>
 
-            {/* TAB 1: THREAT STREAM */}
+            {/* Tab content (lightweight renders) */}
             <div className="mt-4">
-              <div className="mt-4 animate-in fade-in">
-                <div className="grid grid-cols-3 gap-2">
-                  {threatSignals.map((sig, idx) => (
-                    <div
-                      key={sig.title}
-                      className={cn(
-                        "rounded-lg border p-2.5 text-left transition-all text-xs font-medium",
-                        idx === 0
-                          ? "border-blue-600 bg-blue-50 text-blue-900 dark:border-indigo-400 dark:bg-indigo-500/20 dark:text-white shadow-sm dark:shadow-glow-indigo"
-                          : "border-slate-300 bg-slate-50 text-slate-800 hover:border-slate-400 dark:border-white/10 dark:bg-white/[0.02] dark:text-slate-400 dark:hover:border-white/20 dark:hover:text-slate-200"
-                      )}
-                    >
-                      <p className="font-mono text-[10px] font-bold text-blue-700 dark:text-indigo-300">SIGNAL 0{idx + 1}</p>
-                      <p className="mt-1 font-bold truncate text-slate-900 dark:text-slate-100">{sig.title}</p>
-                    </div>
-                  ))}
-                </div>
-
-                <div className="mt-4 rounded-xl border border-slate-300 bg-slate-50 p-4 font-mono text-xs dark:border-white/10 dark:bg-[#030712]/90">
-                  <div className="flex items-center justify-between border-b border-slate-300 dark:border-white/10 pb-2.5">
-                    <span className="font-bold text-slate-900 dark:text-white flex items-center gap-2">
-                      <ShieldAlert className="h-4 w-4 text-amber-600 dark:text-amber-400" />
-                      {currentSignal.title}
-                    </span>
-                    <span className="rounded bg-red-500/10 px-2 py-0.5 text-[10px] font-bold text-red-700 border border-red-300 dark:border-red-500/30 dark:bg-red-500/20 dark:text-red-300">
-                      {currentSignal.severity}
-                    </span>
+              {activeTab === "threat" && (
+                <div className="mt-4 animate-in fade-in">
+                  <div className="grid grid-cols-3 gap-2">
+                    {threatSignals.map((sig, idx) => (
+                      <div
+                        key={sig.title}
+                        className={cn(
+                          "rounded-lg border p-2.5 text-left transition-all text-xs font-medium",
+                          idx === 0
+                            ? "border-blue-600 bg-blue-50 text-blue-900 dark:border-indigo-400 dark:bg-indigo-500/20 dark:text-white shadow-sm dark:shadow-glow-indigo"
+                            : "border-slate-300 bg-slate-50 text-slate-800 hover:border-slate-400 dark:border-white/10 dark:bg-white/[0.02] dark:text-slate-400 dark:hover:border-white/20 dark:hover:text-slate-200"
+                        )}
+                      >
+                        <p className="font-mono text-[10px] font-bold text-blue-700 dark:text-indigo-300">SIGNAL 0{idx + 1}</p>
+                        <p className="mt-1 font-bold truncate text-slate-900 dark:text-slate-100">{sig.title}</p>
+                      </div>
+                    ))}
                   </div>
 
-                  <div className="mt-3 space-y-2 text-slate-800 dark:text-slate-300">
-                    <div className="flex justify-between">
-                      <span className="text-slate-600 dark:text-slate-400 font-semibold">Vector:</span>
-                      <span className="text-blue-700 dark:text-cyan-300 font-bold">{currentSignal.vector}</span>
+                  <div className="mt-4 rounded-xl border border-slate-300 bg-slate-50 p-4 font-mono text-xs dark:border-white/10 dark:bg-[#030712]/90">
+                    <div className="flex items-center justify-between border-b border-slate-300 dark:border-white/10 pb-2.5">
+                      <span className="font-bold text-slate-900 dark:text-white flex items-center gap-2">
+                        <ShieldAlert className="h-4 w-4 text-amber-600 dark:text-amber-400" />
+                        {currentSignal.title}
+                      </span>
+                      <span className="rounded bg-red-500/10 px-2 py-0.5 text-[10px] font-bold text-red-700 border border-red-300 dark:border-red-500/30 dark:bg-red-500/20 dark:text-red-300">
+                        {currentSignal.severity}
+                      </span>
                     </div>
-                    <div className="flex justify-between">
-                      <span className="text-slate-600 dark:text-slate-400 font-semibold">Action:</span>
-                      <span className="text-emerald-800 dark:text-emerald-400 font-bold">{currentSignal.action}</span>
-                    </div>
-                    <div className="flex justify-between">
-                      <span className="text-slate-600 dark:text-slate-400 font-semibold">Status:</span>
-                      <span className="text-indigo-800 dark:text-indigo-300 font-bold">{currentSignal.status}</span>
+
+                    <div className="mt-3 space-y-2 text-slate-800 dark:text-slate-300">
+                      <div className="flex justify-between">
+                        <span className="text-slate-600 dark:text-slate-400 font-semibold">Vector:</span>
+                        <span className="text-blue-700 dark:text-cyan-300 font-bold">{currentSignal.vector}</span>
+                      </div>
+                      <div className="flex justify-between">
+                        <span className="text-slate-600 dark:text-slate-400 font-semibold">Action:</span>
+                        <span className="text-emerald-800 dark:text-emerald-400 font-bold">{currentSignal.action}</span>
+                      </div>
+                      <div className="flex justify-between">
+                        <span className="text-slate-600 dark:text-slate-400 font-semibold">Status:</span>
+                        <span className="text-indigo-800 dark:text-indigo-300 font-bold">{currentSignal.status}</span>
+                      </div>
                     </div>
                   </div>
                 </div>
-              </div>
+              )}
+
+              {activeTab === "attack" && (
+                <div className="mt-2 p-3 text-sm text-slate-700 dark:text-slate-300">
+                  <p className="font-bold">ATT&CK Matrix</p>
+                  <p className="mt-2">ATT&CK mapping and detection coverage summary. For details contact the team.</p>
+                </div>
+              )}
+
+              {activeTab === "soc" && (
+                <div className="mt-2 p-3 text-sm text-slate-700 dark:text-slate-300">
+                  <p className="font-bold">SOC Playbook</p>
+                  <p className="mt-2">Playbooks and runbooks are available on request — reach out via the contact section.</p>
+                </div>
+              )}
             </div>
 
             <div className="mt-5 grid grid-cols-3 gap-3">
