@@ -96,3 +96,7 @@ cd backend && npm run build && npm run typecheck
 - Store secrets in your deployment platform secret manager.
 - Run MongoDB with backups, TLS, and least-privilege credentials.
 - Protect `/admin` with SSO, VPN, IP allowlisting, or an identity-aware proxy for enterprise deployments.
+
+## Deployment
+
+See [DEPLOYMENT.md](./DEPLOYMENT.md) for the Vercel (frontend) and Render (backend) setup.
