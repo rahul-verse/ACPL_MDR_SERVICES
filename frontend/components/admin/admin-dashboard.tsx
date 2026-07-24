@@ -116,7 +116,7 @@ function LoginPanel({
         className="glass-panel-abnormal w-full max-w-md rounded-3xl p-8 shadow-lg backdrop-blur-2xl bg-white/95 border border-slate-200 dark:bg-[#090f20] dark:border-white/10"
         noValidate
       >
-        <div className="flex h-14 w-14 items-center justify-center rounded-xl border border-indigo-500/30 bg-indigo-500/10 text-indigo-300 shadow-glow-indigo">
+        <div className="flex h-14 w-14 items-center justify-center rounded-xl border border-red-500/30 bg-red-500/10 text-red-300 shadow-sm">
           <ShieldCheck aria-hidden className="h-7 w-7" />
         </div>
         <h1 className="mt-6 text-2xl font-black text-slate-900 dark:text-white">ACPL SOC Login</h1>
@@ -135,7 +135,7 @@ function LoginPanel({
               autoComplete="email"
               aria-invalid={Boolean(errors.email)}
               aria-describedby={errors.email ? "admin-email-error" : undefined}
-              className={errors.email ? "border-red-400 bg-red-50 text-slate-900 placeholder:text-slate-400 focus-visible:ring-red-400" : "border-slate-300 bg-slate-50 text-slate-900 placeholder:text-slate-500 shadow-sm focus-visible:ring-indigo-300 dark:border-white/12 dark:bg-[#020617] dark:text-white dark:placeholder:text-slate-400"}
+              className={errors.email ? "border-red-400 bg-red-50 text-slate-900 placeholder:text-slate-400 focus-visible:ring-red-400" : "border-slate-300 bg-slate-50 text-slate-900 placeholder:text-slate-500 shadow-sm focus-visible:ring-red-300 dark:border-white/12 dark:bg-[#020617] dark:text-white dark:placeholder:text-slate-400"}
               {...register("email")}
             />
             {errors.email ? (
@@ -155,7 +155,7 @@ function LoginPanel({
               autoComplete="current-password"
               aria-invalid={Boolean(errors.password)}
               aria-describedby={errors.password ? "admin-password-error" : undefined}
-              className={errors.password ? "border-red-400 bg-red-50 text-slate-900 placeholder:text-slate-400 focus-visible:ring-red-400" : "border-slate-300 bg-slate-50 text-slate-900 placeholder:text-slate-500 shadow-sm focus-visible:ring-indigo-300 dark:border-white/12 dark:bg-[#020617] dark:text-white dark:placeholder:text-slate-400"}
+              className={errors.password ? "border-red-400 bg-red-50 text-slate-900 placeholder:text-slate-400 focus-visible:ring-red-400" : "border-slate-300 bg-slate-50 text-slate-900 placeholder:text-slate-500 shadow-sm focus-visible:ring-red-300 dark:border-white/12 dark:bg-[#020617] dark:text-white dark:placeholder:text-slate-400"}
               {...register("password")}
             />
             {errors.password ? (
@@ -170,7 +170,7 @@ function LoginPanel({
             {error}
           </p>
         ) : null}
-        <Button className="mt-6 w-full shadow-glow-indigo font-bold bg-gradient-to-r from-indigo-600 to-cyan-500 hover:from-indigo-500 hover:to-cyan-400 text-white border-0" size="lg" disabled={isSubmitting} aria-busy={isSubmitting}>
+        <Button className="mt-6 w-full font-bold bg-gradient-to-r from-red-600 to-rose-500 hover:from-red-500 hover:to-rose-400 text-white border-0 shadow-sm" size="lg" disabled={isSubmitting} aria-busy={isSubmitting}>
           {isSubmitting ? <Loader2 aria-hidden className="h-4 w-4 animate-spin" /> : null}
           Sign In to SOC
         </Button>
@@ -293,7 +293,7 @@ function EnquiryManager({
       <div className="mx-auto max-w-7xl">
         <header className="flex flex-col gap-5 border-b border-slate-300 dark:border-white/10 pb-6 md:flex-row md:items-center md:justify-between">
           <div>
-            <p className="text-xs font-bold uppercase tracking-[0.2em] text-blue-700 dark:text-cyan-400 font-mono">
+            <p className="text-xs font-bold uppercase tracking-[0.2em] text-red-700 dark:text-red-400 font-mono">
               ACPL MDR Operations Center
             </p>
             <h1 className="mt-2 text-3xl font-black text-slate-900 dark:text-white md:text-4xl">
@@ -303,7 +303,7 @@ function EnquiryManager({
           <div className="flex flex-wrap items-center gap-3">
             <BackButton />
             <Button variant="secondary" onClick={exportCSV} disabled={!payload || payload.data.length === 0}>
-              <Download aria-hidden className="h-4 w-4 text-blue-700 dark:text-cyan-300" />
+              <Download aria-hidden className="h-4 w-4 text-red-700 dark:text-red-300" />
               Export CSV
             </Button>
             <Button variant="secondary" onClick={fetchEnquiries} disabled={loading}>
@@ -322,7 +322,7 @@ function EnquiryManager({
             <span className="sr-only">Search enquiries</span>
             <Search aria-hidden className="absolute left-3.5 top-3.5 h-4 w-4 text-slate-500" />
             <Input
-              className="pl-10 border-slate-300 bg-white text-slate-900 font-medium dark:border-white/12 dark:bg-[#060a14]/80 dark:text-white focus-visible:ring-blue-600"
+              className="pl-10 border-slate-300 bg-white text-slate-900 font-medium dark:border-white/12 dark:bg-[#060a14]/80 dark:text-white focus-visible:ring-red-600"
               placeholder="Search by name, company, email, or service priority..."
               value={query}
               onChange={(event) => {
@@ -333,7 +333,7 @@ function EnquiryManager({
           </label>
           <select
             aria-label="Filter by status"
-            className="h-11 rounded-xl border border-slate-300 bg-white text-slate-900 font-bold dark:border-white/12 dark:bg-[#060a14] dark:text-white px-4 text-sm focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-blue-600 shadow-sm"
+            className="h-11 rounded-xl border border-slate-300 bg-white text-slate-900 font-bold dark:border-white/12 dark:bg-[#060a14] dark:text-white px-4 text-sm focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-red-600 shadow-sm"
             value={status}
             onChange={(event) => {
               setPage(1);
@@ -452,10 +452,10 @@ function EnquiryManager({
       {/* Enquiry Inspection Modal */}
       {selectedEnquiry ? (
         <div className="fixed inset-0 z-50 flex items-center justify-center bg-black/60 p-4 backdrop-blur-sm animate-in fade-in">
-          <div className="relative w-full max-w-lg rounded-2xl border border-slate-200 bg-white p-6 shadow-xl dark:border-cyan-400/30 dark:bg-[#060a14] dark:shadow-panel backdrop-blur-2xl">
+          <div className="relative w-full max-w-lg rounded-2xl border border-slate-200 bg-white p-6 shadow-xl dark:border-red-400/20 dark:bg-[#060a14] dark:shadow-panel backdrop-blur-2xl">
             <div className="flex items-start justify-between border-b border-slate-200 dark:border-white/10 pb-4">
               <div>
-                <span className="text-xs font-mono font-bold text-indigo-600 dark:text-cyan-400 uppercase">Enquiry Inspection</span>
+                <span className="text-xs font-mono font-bold text-red-600 dark:text-red-400 uppercase">Enquiry Inspection</span>
                 <h3 className="text-xl font-bold text-slate-900 dark:text-white">{selectedEnquiry.name}</h3>
                 <p className="text-xs text-slate-500 dark:text-slate-400">{selectedEnquiry.company}</p>
               </div>
@@ -482,7 +482,7 @@ function EnquiryManager({
 
               <div>
                 <p className="text-xs text-slate-500 dark:text-slate-400 font-bold">Service Interest</p>
-                <p className="font-bold text-indigo-600 dark:text-cyan-300">{selectedEnquiry.service}</p>
+                <p className="font-bold text-red-600 dark:text-red-300">{selectedEnquiry.service}</p>
               </div>
 
               <div>
@@ -530,14 +530,14 @@ function EnquiryRow({
         {enquiry.phone ? <p className="mt-1 text-xs font-medium text-slate-600 dark:text-slate-400">{enquiry.phone}</p> : null}
       </td>
       <td className="px-5 py-5 font-bold text-slate-900 dark:text-slate-200">{enquiry.company}</td>
-      <td className="px-5 py-5 font-bold text-blue-700 dark:text-cyan-300">{enquiry.service}</td>
+      <td className="px-5 py-5 font-bold text-red-700 dark:text-red-300">{enquiry.service}</td>
       <td className="max-w-xs px-5 py-5 text-slate-800 dark:text-slate-300 font-medium truncate">{enquiry.message}</td>
       <td className="px-5 py-5">
         <StatusControl enquiry={enquiry} updating={updating} onStatusChange={onStatusChange} />
       </td>
       <td className="px-5 py-5 text-slate-600 dark:text-slate-400 text-xs font-medium">{formatDate(enquiry.createdAt)}</td>
       <td className="px-5 py-5 text-right">
-        <Button variant="ghost" size="sm" onClick={onInspect} className="text-slate-800 dark:text-slate-300 hover:text-blue-700 dark:hover:text-white">
+        <Button variant="ghost" size="sm" onClick={onInspect} className="text-slate-800 dark:text-slate-300 hover:text-red-700 dark:hover:text-white">
           <Eye className="h-4 w-4" />
         </Button>
       </td>
@@ -565,7 +565,7 @@ function EnquiryCard({
         </div>
         <StatusPill status={enquiry.status} />
       </div>
-      <p className="mt-3 text-xs font-bold text-blue-700 dark:text-cyan-300">{enquiry.service}</p>
+      <p className="mt-3 text-xs font-bold text-red-700 dark:text-red-300">{enquiry.service}</p>
       <p className="mt-2 text-xs leading-5 text-slate-800 dark:text-slate-300 font-medium line-clamp-2">{enquiry.message}</p>
       <div className="mt-4 flex items-center justify-between border-t border-slate-300 dark:border-white/10 pt-3">
         <Button variant="ghost" size="sm" onClick={onInspect} className="gap-1 text-xs font-bold text-slate-800 dark:text-slate-300">
@@ -594,7 +594,7 @@ function StatusControl({
         value={enquiry.status}
         disabled={updating}
         onChange={(event) => onStatusChange(enquiry._id, event.target.value as EnquiryStatus)}
-        className="h-8 rounded-lg border border-slate-300 bg-white text-slate-900 font-bold dark:border-white/12 dark:bg-[#030712] dark:text-white px-2.5 text-xs focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-blue-600 disabled:opacity-50 shadow-sm transition duration-200 ease-in-out hover:border-slate-400"
+        className="h-8 rounded-lg border border-slate-300 bg-white text-slate-900 font-bold dark:border-white/12 dark:bg-[#030712] dark:text-white px-2.5 text-xs focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-red-600 disabled:opacity-50 shadow-sm transition duration-200 ease-in-out hover:border-slate-400"
       >
         {ENQUIRY_STATUSES.map((item) => (
           <option key={item} value={item} className="bg-white text-slate-900 dark:bg-[#060a14] dark:text-white">
@@ -602,7 +602,7 @@ function StatusControl({
           </option>
         ))}
       </select>
-      {updating ? <Loader2 aria-hidden className="h-4 w-4 animate-spin text-blue-700 dark:text-cyan-300" /> : null}
+      {updating ? <Loader2 aria-hidden className="h-4 w-4 animate-spin text-red-700 dark:text-red-300" /> : null}
     </div>
   );
 }
