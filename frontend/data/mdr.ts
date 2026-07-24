@@ -57,6 +57,72 @@ export const services = [
       "Expert tuning for SIEM, XDR, EDR, SOAR, firewall, email, cloud, and vulnerability platforms.",
     icon: CloudCog,
   },
+  {
+    title: "Managed SIEM",
+    description:
+      "Centralized log management, normalization, tuning, and alert engineering for modern security operations.",
+    icon: ShieldCheck,
+  },
+  {
+    title: "Endpoint Detection & Response (EDR)",
+    description:
+      "Advanced endpoint telemetry monitoring, behavioral analytics, and rapid containment capabilities.",
+    icon: ShieldEllipsis,
+  },
+  {
+    title: "Cloud Security Monitoring",
+    description:
+      "Detection and response for Azure, AWS, and GCP identity, workload, and configuration risks.",
+    icon: Globe2,
+  },
+  {
+    title: "Microsoft Defender Management",
+    description:
+      "Security configuration, alert tuning, incident response support, and platform optimization for Defender.",
+    icon: ShieldCheck,
+  },
+  {
+    title: "Vulnerability Management",
+    description:
+      "Risk-based vulnerability assessment, prioritization, and remediation tracking across your estate.",
+    icon: CircleGauge,
+  },
+  {
+    title: "Security Operations Center (SOC)",
+    description:
+      "24x7 analyst-led monitoring, validation, escalation, and reporting for enterprise environments.",
+    icon: Activity,
+  },
+  {
+    title: "Security Awareness Training",
+    description:
+      "Phishing simulations, training content, and user-risk reduction programs for staff resilience.",
+    icon: BrainCircuit,
+  },
+  {
+    title: "Email Security",
+    description:
+      "Protection against phishing, impersonation, malware, and business email compromise.",
+    icon: Layers3,
+  },
+  {
+    title: "Identity & Access Management (IAM)",
+    description:
+      "Identity governance, access reviews, MFA-hardening, and suspicious sign-in monitoring.",
+    icon: Fingerprint,
+  },
+  {
+    title: "Compliance & Risk Assessment",
+    description:
+      "Control mapping, policy alignment, audit readiness, and executive risk reporting support.",
+    icon: Gauge,
+  },
+  {
+    title: "Digital Forensics",
+    description:
+      "Evidence collection, timeline reconstruction, root cause analysis, and incident support services.",
+    icon: FileSearch,
+  },
 ];
 
 export const features = [
